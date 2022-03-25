@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css " rel="stylesheet">
+    <link href="css/body.css " rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <script defer src="js/script.js"></script>
+    <title>Przelicznik walut</title>
+</head>
+
+<body class="body">
+    <form class="form js-form">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Kalkulator PLN-EUR</legend>
+            <label class="form__label">Podaj kwotę w PLN <input class="js-amount" required type="number" min="0.1"
+                    step="0.01"></label>
+            <p> <button type="reset" class="js-reset">Wyczyść</button></p>
+            <label>
+                Wybierz walutę:
+                <select class="js-option" name="currency">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </label>
+            <p>Kursy walut z dnia 21.03.2022:</p>
+            <p><label>Euro: <input class="form__rate js-rate" type="number" name="EUR" readonly value="4.72">
+                </label></p>
+            <p><label>Dolar amerykański: <input class="form__rate js-rateUSD" type="number" name="USD" readonly
+                        value="4.27">
+                </label></p>
+            <p><label>Funt szterling : <input class="form__rate js-rateGBP" type="number" name="GBP" readonly
+                        value="5.61">
+                </label></p>
+            <p><label>Frank szwajcarski: <input class="form__rate js-rateCHF" type="number" name="CHF" readonly
+                        value="4.57">
+                </label></p>
+            <p>Otrzymasz: <strong class="js-result">0</strong></p>
+        </fieldset>
+        <button class="form__button js-submit">Przelicz</button>
+    </form>
+</body>
+
+</html>
