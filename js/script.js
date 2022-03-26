@@ -1,33 +1,46 @@
-console.log("Witam w moim kalkulatorze")
-let formElement = document.querySelector(".js-form")
-let resultElement = document.querySelector(".js-result")
-let rateElement = document.querySelector(".js-rate")
-let rateUSDElement = document.querySelector(".js-rateUSD")
-let rateGBPElement = document.querySelector(".js-rateGBP")
-let rateCHFElement = document.querySelector(".js-rateCHF")
-let amountElement = document.querySelector(".js-amount")
-let option = document.querySelector(".js-option")
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-    let amount = amountElement.value;
-    let rate = rateElement.value;
-    let rateUSD = rateUSDElement.value;
-    let rateGBP = rateGBPElement.value;
-    let rateCHF = rateCHFElement.value;
-    let result;
-    switch (option.value) {
-        case "EUR":
-            result = amount / rate
-            break
-        case "USD":
-            result = amount / rateUSD
-            break
-        case "GBP":
-            result = amount / rateGBP
-            break
-        case "CHF":
-            result = amount / rateCHF
-            break
+{
+    console.log("Witam w moim kalkulatorze")
+    const calculateResult = (option, amount) => {
+        const rateEURElement = document.querySelector(".js-rateEUR")
+        const rateUSDElement = document.querySelector(".js-rateUSD")
+        const rateGBPElement = document.querySelector(".js-rateGBP")
+        const rateCHFElement = document.querySelector(".js-rateCHF")
+        const rateEUR = rateEURElement.value;
+        const rateUSD = rateUSDElement.value;
+        const rateGBP = rateGBPElement.value;
+        const rateCHF = rateCHFElement.value;
+        switch (option) {
+            case "EUR":
+                return amount / rateEUR
+            case "USD":
+                return amount / rateUSD
+            case "GBP":
+                return amount / rateGBP
+            case "CHF":
+                return amount / rateCHF
+        }
     }
-    resultElement.innerHTML = `${result.toFixed(2)} ${option.value}` 
-})
+    const resultText = (result, option) => {
+        const resultElement = document.querySelector(".js-result")
+        resultElement.innerHTML = `${result.toFixed(2)} ${option}`
+    }
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const amountElement = document.querySelector(".js-amount")
+        const optionElement = document.querySelector(".js-option")
+
+
+        const amount = amountElement.value;
+        const option = optionElement.value;
+
+        const result = calculateResult(option, amount);
+        resultText(result, option);
+    }
+
+    const init = () => {
+        const formElement = document.querySelector(".js-form")
+        formElement.addEventListener("submit", onFormSubmit)
+    }
+    init();
+}
